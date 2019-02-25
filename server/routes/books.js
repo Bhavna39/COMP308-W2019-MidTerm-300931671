@@ -29,11 +29,12 @@ router.get('/add', (req, res, next) => {
 
   res.render("books/details", {
     title: "Add New Book",
+    books: book
   });
 
 });
 
-// POST process the Book Details page and create a new Book - CREATE
+// POST process the Book Details page and create a new Book - CREATE/ADD
 router.post('/add', (req, res, next) => {
 
   let newBook = book({
@@ -58,20 +59,51 @@ router.post('/add', (req, res, next) => {
 
 });
 
-// GET the Book Details page in order to edit an existing Book
-router.get('/:id', (req, res, next) => {
+// GET the Book Details page in order to edit an existing Book - EDIT functionality 
+router.get('/edit/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+  let id = req.params.id;
+  
+  book.findById(id, (err, bookObject)=>{
+      if(err){
+        console.log(err);
+        res.end(err);
+      }
+      else{
+        // shows the view of the edit
+        res.render('books/details', {
+          title: 'Edit Book Details',
+          books: bookObject
+        })
+      }
+  });
+   
 });
 
-// POST - process the information passed from the details form and update the document
-router.post('/:id', (req, res, next) => {
+// POST - process the information passed from the details form and update the document - EDIT/UPDATE - submit button
+router.post('/edit/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+  let id = req.params.id;
+
+  let updatedBook = book({
+    "_id": id,
+    "Title": req.body.title,
+    "Price": req.body.price,
+    "Author": req.body.author,
+    "Genre": req.body.genre
+  })
+
+  book.update({_id: id}, updatedBook, (err)=>{
+    if(err){
+      console.log(err);
+      res.end(err);
+    }
+    else{
+      //refresh the book list
+      res.redirect('/books');
+    }
+  })
+   
 
 });
 

@@ -6,7 +6,7 @@
         <div class="col-md-offset-1 col-md-10">
           <h3>Favourite Books List </h3>
           <!-- ------------------------ -->
-          <!-- FIX THE ADD BUTTON BELOW -->
+          <!-- ADD BUTTON -->
           <!-- ------------------------ -->
           <a href="books/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a book</a>
           <br>
@@ -33,14 +33,19 @@
 
                   <td class="text-center">
                     <!-- ------------------------ -->
-                    <!-- ADD the EDIT BUTTON HERE -->
+                    <!-- EDIT BUTTON -->
                     <!-- ------------------------ -->
+                    <a href="/books/edit/<%= books[count]._id %>"
+                    class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                    
                   </td>
 
                   <td class="text-center">
                     <!-- ------------------------ -->
-                    <!-- ADD the DELETE BUTTON HERE -->
+                    <!-- DELETE BUTTON -->
                     <!-- ------------------------ -->
+                    <a href="/books/delete/<%= books[count]._id %>"
+                      class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                   </td>
                 </tr>
                 <% } %>

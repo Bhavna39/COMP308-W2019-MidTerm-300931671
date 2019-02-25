@@ -1,6 +1,6 @@
 <% include ../partials/header.ejs %>
 
-   <!-- MAIN CONTENT -->
+   <!-- MAIN CONTENT FOR BOOK DETAILS-->
    <div class="container">
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
@@ -9,22 +9,22 @@
               <div class="form-group">
                 <label for="NameTextField">Title</label>
                 <input type="text" class="form-control" id="NameTextField"
-                placeholder="Book Name" name="title"  required>
+                placeholder="Book Name" name="title" value="<%= books.Title %>" required>
               </div>
               <div class="form-group">
                 <label for="PriceTextField">Price</label>
                 <input type="text" class="form-control" id="PriceTextField"
-                placeholder="Book Price" name="price"  required>
+                placeholder="Book Price" name="price" value="<%= books.Price %>" required>
               </div>
               <div class="form-group">
                 <label for="AuthorTextField">Author</label>
                 <input type="text" class="form-control" id="AuthorTextField"
-                placeholder="Book Author" name="author"  required>
+                placeholder="Book Author" name="author" value="<%= books.Author %>"  required>
               </div>
               <div class="form-group">
                 <label for="GenreTextField">Genre</label>
                 <input type="text" class="form-control" id="GenreTextField"
-                placeholder="Book Genre" name="genre"  required>
+                placeholder="Book Genre" name="genre" value="<%= books.Genre %>" required>
               </div>
 
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
