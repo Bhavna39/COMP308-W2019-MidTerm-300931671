@@ -5,12 +5,19 @@
 /*       Favourite Books           */
 /***********************************/
 
-// moddules for node and express
+// modules for node and express
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+
+// authentication modules
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
@@ -43,6 +50,33 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 
+//express-session - configuration
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}));
+
+
+// flash - databinding 
+app.use(flash());
+
+// passport - init
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport user config 
+
+// User model
+let UserModel = require('./models/users');
+let User = UserModel.User;
+
+// strategy for authentication
+passport.use(User.createStrategy());
+
+// binary conversion - Serialize & Deserialize
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // route redirects
 app.use('/', index);
