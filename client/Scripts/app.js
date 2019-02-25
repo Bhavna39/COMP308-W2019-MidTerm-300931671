@@ -106,9 +106,10 @@ $.fn.pageMe = function(opts){
 // IIFE
 (function(){
   $(".btn-danger").click(function(event){
-    if(!confirm("Are you sure?")) {
+    if(!confirm("Are you sure???")) {
       event.preventDefault();
-      window.location.assign("/games");
+      //cancel deletion redirects/refreshes the books list page
+      window.location.assign("/books");
     }
   });
 
