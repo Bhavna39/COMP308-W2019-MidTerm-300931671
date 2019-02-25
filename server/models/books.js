@@ -1,3 +1,10 @@
+/**********************************/
+/* Model - Books Java Script File */
+/*      Bhavna Pulliahgari        */
+/*          300931671             */
+/*       Favourite Books          */
+/**********************************/
+
 let mongoose = require('mongoose');
 
 // create a model class

@@ -1,3 +1,10 @@
+/**********************************/
+/*       Java Script File         */
+/*      Bhavna Pulliahgari        */
+/*          300931671             */
+/*       Favourite Books          */
+/**********************************/
+
 /* custom JS goes here */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */

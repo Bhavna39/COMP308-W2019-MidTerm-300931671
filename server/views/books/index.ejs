@@ -1,13 +1,13 @@
+<!-- Details - EJS File -->
+
 <% include ../partials/header.ejs %>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT FOR BOOK DETAILS -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
           <h3>Favourite Books List </h3>
-          <!-- ------------------------ -->
           <!-- ADD BUTTON -->
-          <!-- ------------------------ -->
           <a href="books/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a book</a>
           <br>
           <div class="table-responsive">
@@ -32,18 +32,14 @@
                   <td class="text-center"><%= books[count].Genre %></td>
 
                   <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- EDIT BUTTON -->
-                    <!-- ------------------------ -->
+                <!-- EDIT BUTTON -->
                     <a href="/books/<%= books[count]._id %>"
                     class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
                     
                   </td>
 
-                  <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- DELETE BUTTON -->
-                    <!-- ------------------------ -->
+                  <td class="text-center"> 
+                <!-- DELETE BUTTON -->
                     <a href="/books/delete/<%= books[count]._id %>"
                       class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                   </td>
