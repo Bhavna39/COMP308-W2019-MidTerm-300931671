@@ -33,8 +33,8 @@ router.get('/login', (req, res, next) => {
       {
         res.render('auth/login', {
           title: "Login",
-          //messages: req.flash('loginMessage'),
-          messages: 'Login Failed',
+          messages: req.flash('loginMessage'),
+          //messages: 'Login Failed',
           displayName: req.user ? req.user.displayName : ''
         })
       }else{
@@ -78,7 +78,7 @@ router.post('/register', (req, res, next) => {
       {
         console.log('Error: Inserting New User');
             if(err.name == "UserExistsError"){
-              req.flash('registerMessage', 'Registration Unsuccessful - User Already Exists, Please try again');
+              req.flash('registerMessage', 'Registration Error - User Already Exists, Please try again');
               console.log('Error: User Already Exists!');
             }
             return res.render('auth/register', {

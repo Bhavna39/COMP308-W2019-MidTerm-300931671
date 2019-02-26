@@ -9,12 +9,23 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+let passport = require('passport');
+
+function requireAuth(req, res, next){
+  //test - if user is logged in
+  if(!req.isAuthenticated())
+  {
+    return res.redirect('/login');
+  }
+  
+  next();
+}
 
 // define the book model
 let book = require('../models/books');
 
 /* GET books List page. READ */
-router.get('/', (req, res, next) => {
+router.get('/', requireAuth, (req, res, next) => {
   // find all books in the books collection
   book.find( (err, books) => {
     if (err) {
@@ -33,7 +44,7 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 /* display add page */
-router.get('/add', (req, res, next) => {
+router.get('/add', requireAuth, (req, res, next) => {
 
   //title property
   res.render("books/details", {
@@ -45,7 +56,7 @@ router.get('/add', (req, res, next) => {
 });
 
 // POST process the Book Details page and create a new Book - CREATE/ADD
-router.post('/add', (req, res, next) => {
+router.post('/add', requireAuth, (req, res, next) => {
 
   //object instantiation 
   let newBook = book({
@@ -72,7 +83,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Book Details page in order to edit an existing Book - EDIT functionality 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', requireAuth, (req, res, next) => {
 
   //declaring var id
   let id = req.params.id;
@@ -96,7 +107,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document - EDIT/UPDATE - submit button
-router.post('/:id', (req, res, next) => {
+router.post('/:id', requireAuth, (req, res, next) => {
 
   //declaration of variable id
   let id = req.params.id;
@@ -126,7 +137,7 @@ router.post('/:id', (req, res, next) => {
 });
 
 // GET - process the delete by user id
-router.get('/delete/:id', (req, res, next) => {
+router.get('/delete/:id', requireAuth, (req, res, next) => {
 
   //declaration of variable id
     let id = req.params.id;
