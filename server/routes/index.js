@@ -33,8 +33,8 @@ router.get('/login', (req, res, next) => {
       {
         res.render('auth/login', {
           title: "Login",
-          //messages: req.flash('loginMessage', 'test message'),
-          message: 'Login Failed',
+          //messages: req.flash('loginMessage'),
+          messages: 'Login Failed',
           displayName: req.user ? req.user.displayName : ''
         })
       }else{
@@ -100,6 +100,7 @@ router.post('/register', (req, res, next) => {
 /* GET Logout page - Perform */
 router.get('/logout', (req, res, next) => {
   req.logout(0);
+  //homepage
   res.redirect('/');
 });
 

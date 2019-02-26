@@ -41,6 +41,13 @@
             </i> Books List</a></li>
           <% } %>
 
+<!-- Welcome message, Login and Logout Button -->
+            <% if(typeof displayName == 'string' && displayName) { %>
+                <li class="navbar-text"><i class="fa fa-user fa-lg"></i> Welcome - <%= displayName %></li>
+                <li class="nav-item"><a class="nav-link" href="/logout"><i class="fa fa-sign-out fa-lg" style="color:red"></i> Logout</a></li>
+            <% } else { %>
+            <li class="nav-item"><a class="nav-link" href="/login"><i class="fa fa-sign-in fa-lg" style="color:green"></i> Login</a></li>
+            <% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
