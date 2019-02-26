@@ -1,9 +1,9 @@
-/**********************************/
-/* Users - Books Java Script File */
-/*      Bhavna Pulliahgari        */
-/*          300931671             */
-/*       Favourite Books          */
-/**********************************/
+/***********************************/
+/* Models - Users Java Script File */
+/*      Bhavna Pulliahgari         */
+/*          300931671              */
+/*       Favourite Books           */
+/***********************************/
 
 // require modules - User Model
 
